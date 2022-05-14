@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ import java.util.Set;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "tb_movie")
-public class Movie {
+public class Movie implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +33,6 @@ public class Movie {
     Integer count;
     String image;
 
-    @OneToMany(mappedBy = "id.movie")
+    @OneToMany(mappedBy = "id_movie")
     Set<Score> scores = new HashSet<>();
 }
